@@ -8,7 +8,6 @@ public sealed interface Try<A> {
 
     record Failure<A>(Throwable error) implements Try<A> {}
 
-
     static <A> Try<A> success(A value) {
         return new Success<>(value);
     }

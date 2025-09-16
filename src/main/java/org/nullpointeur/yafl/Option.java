@@ -96,6 +96,10 @@ public sealed interface Option<A> extends Kind<Option.ForOption, A> {
         };
     }
 
+    default <L> Either<L, A> toEither(Supplier<L> left) {
+        return fold(Either.left(left.get()), Either::right);
+    }
+
     // Test plumbing for type classes
 
     static <A> org.nullpointeur.yafl.typeclass.Functor<ForOption, A> functor() {

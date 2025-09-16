@@ -97,4 +97,8 @@ public sealed interface Either<L, R> {
         return fold(other, r -> r);
     }
 
+    default Option<R> toOption() {
+        return fold(l -> Option.none(), Option::some);
+    }
+
 }
